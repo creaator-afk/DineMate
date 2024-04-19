@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './Add.css'
 import { assets,url } from '../../assets/assets';
 import axios from 'axios';
@@ -6,11 +6,32 @@ import { toast } from 'react-toastify';
 
 const Add = () => {
 
+    const onRecommend = async () => {
+        const food = ref.current.value
+        const recommendation = new FormData()
+        recommendation.append("name",food)
+        console.log(recommendation)
+        const response = axios.post(`${url}/api/add_list`, {name:food});
+        if (response.data.success) {
+            toast.success(response.data.message)
+            setData({
+                name: ""
+            })
+            setImage(false);
+        }
+        else{
+            toast.error(response.data.message)
+        }
+    }
+    
+    const ref = useRef();
+
     const [data, setData] = useState({
         name: "",
         description: "",
         price: "",
-        category: "Salad"
+        category: "Salad",
+        restaurant: ""
     });
 
     const [image, setImage] = useState(false);
@@ -23,6 +44,8 @@ const Add = () => {
         formData.append("price", Number(data.price));
         formData.append("category", data.category);
         formData.append("image", image);
+        formData.append("restaurant", data.restaurant);
+
         const response = await axios.post(`${url}/api/food/add`, formData);
         if (response.data.success) {
             toast.success(response.data.message)
@@ -30,7 +53,8 @@ const Add = () => {
                 name: "",
                 description: "",
                 price: "",
-                category: "Salad"
+                category: "Salad",
+                restaurant: ""
             })
             setImage(false);
         }
@@ -48,6 +72,18 @@ const Add = () => {
     return (
         <div className='add'>
             <form className='flex-col' onSubmit={onSubmitHandler}>
+
+                <div className="add-restaurant">
+                    <p>Restaurant name</p>
+                    <input 
+                    name='restaurant'
+                    value={data.restaurant}
+                    onChange={onChangeHandler}
+                    placeholder='write restaurant name'
+                    type="text" 
+                    />
+                </div>
+
                 <div className='add-img-upload flex-col'>
                     <p>Upload image</p>
                     <label htmlFor="image">
@@ -84,6 +120,15 @@ const Add = () => {
                 </div>
                 <button type='submit' className='add-btn' >ADD</button>
             </form>
+
+            <div className="recommend-bar">
+                <input 
+                type="text" 
+                name = "dish_rec"
+                ref={ref}
+                />
+                <img src={assets.add_icon} alt="" onClick={onRecommend} />
+            </div>
         </div>
     )
 }

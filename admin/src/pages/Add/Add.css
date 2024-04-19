@@ -8,6 +8,12 @@
 .add form{
    gap: 20px;
 }
+.add-restaurant{
+    width: max(40%,280px);
+}
+.add-restaurant input{
+    padding: 10px 10px;
+}
 .add-img-upload img{
     width: 120px;
 }

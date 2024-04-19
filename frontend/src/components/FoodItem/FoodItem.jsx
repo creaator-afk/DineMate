@@ -22,11 +22,13 @@ const FoodItem = ({ image, name, price, desc , id }) => {
                 }
             </div>
             <div className="food-item-info">
+                <p className="food-item-price">Chotu's cafe</p>
                 <div className="food-item-name-rating">
                     <p>{name}</p> <img src={assets.rating_starts} alt="" />
                 </div>
                 <p className="food-item-desc">{desc}</p>
                 <p className="food-item-price">${price}</p>
+                
             </div>
         </div>
     )

@@ -45,6 +45,7 @@ const List = () => {
             <b>Name</b>
             <b>Category</b>
             <b>Price</b>
+            <b>Restaurnat</b>
             <b>Action</b>
           </div>
           {list.map((item,index)=>{
@@ -54,6 +55,7 @@ const List = () => {
                 <p>{item.name}</p>
                 <p>{item.category}</p>
                 <p>${item.price}</p>
+                <p>{item.restaurant}</p>
                 <p className='cursor' onClick={()=>removeFood(item._id)}>x</p>
               </div>
             )
