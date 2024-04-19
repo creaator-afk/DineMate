@@ -7,12 +7,14 @@ import AppDownload from '../../components/AppDownload/AppDownload'
 const Home = () => {
 
   const [category,setCategory] = useState("All")
+  const [recommnedation_list_,setRecommendendationList] = useState("All")
+
 
   return (
     <>
-      <Header/>
+      <Header setRecommendendationList = {setRecommendendationList} />
       <ExploreMenu setCategory={setCategory} category={category}/>
-      <FoodDisplay category={category}/>
+      <FoodDisplay category={category} recommnedation_list_={recommnedation_list_}/>
       <AppDownload/>
     </>
   )

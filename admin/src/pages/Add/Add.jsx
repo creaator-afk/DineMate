@@ -10,7 +10,6 @@ const Add = () => {
         const food = ref.current.value
         const recommendation = new FormData()
         recommendation.append("name",food)
-        console.log(recommendation)
         const response = axios.post(`${url}/api/add_list`, {name:food});
         if (response.data.success) {
             toast.success(response.data.message)

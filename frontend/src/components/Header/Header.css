@@ -1,4 +1,6 @@
-
+.datalist{
+    
+}
 .search-box{
     position: relative;
     background-color: white;
@@ -7,7 +9,8 @@
     padding: 14px;
     border-radius: 22px;
     gap: 5px;
-    width: 500px;
+    min-width: 300px;
+    width: 100%;
 }
 .search-box input{
     flex-grow: 1;
@@ -37,6 +40,9 @@
     left: 6vw;
     animation: fadeIn 3s;
 }
+.sub-content p{
+    color: blue;
+}
 .header-contents h2{
     font-weight:500;
     color: white;
@@ -64,11 +70,19 @@
     }
 }
 @media(max-width:750px){
+
+    
     .header-contents{
-        max-width: 55%;
+        background-color: #0000006b;
+        border-radius: 22px;
+        align-items: center;
+        max-width: 100%;
     }
     .header-contents p{
        display: none;
+    }
+    .header-contents h4{
+        display: none;
     }
     .header-contents button{
         padding: 2vw 4vw;

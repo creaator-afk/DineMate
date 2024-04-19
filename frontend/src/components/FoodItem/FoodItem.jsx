@@ -11,7 +11,9 @@ const FoodItem = ({ image, name, price, desc , id }) => {
     return (
         <div className='food-item'>
             <div className='food-item-img-container'>
-                <img className='food-item-image' src={url+"/images/"+image} alt="" />
+                <img className='food-item-image' 
+                src={image} 
+                alt="" />
                 {!cartItems[id]
                 ?<img className='add' onClick={() => addToCart(id)} src={assets.add_icon_white} alt="" />
                 :<div className="food-item-counter">
@@ -22,12 +24,12 @@ const FoodItem = ({ image, name, price, desc , id }) => {
                 }
             </div>
             <div className="food-item-info">
-                <p className="food-item-price">Chotu's cafe</p>
+                <p className="food-item-price"></p>
                 <div className="food-item-name-rating">
                     <p>{name}</p> <img src={assets.rating_starts} alt="" />
                 </div>
                 <p className="food-item-desc">{desc}</p>
-                <p className="food-item-price">${price}</p>
+                {/* <p className="food-item-price">₹{price}</p> */}
                 
             </div>
         </div>
