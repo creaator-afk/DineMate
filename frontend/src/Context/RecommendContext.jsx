@@ -27,6 +27,7 @@ const RecommendContextProvider = (props) => {
                 "input": name,
               }),
               headers: {
+                'Access-Control-Allow-Origin':'*',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
               },

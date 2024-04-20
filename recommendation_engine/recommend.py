@@ -35,10 +35,13 @@ def recommend_food(food_name):
         food_image.append(n_dataset.iloc[index][1])
 
     return current_food, food_list, food_image
-
+origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*']
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 n_dataset = pk.load(open("imported from jupiter notebook/new_dataset.pkl","rb"))
